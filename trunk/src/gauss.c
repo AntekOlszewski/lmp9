@@ -10,7 +10,7 @@ int eliminate(Matrix *mat, Matrix *b){
     	for (i = 0; i < mat->r -1; i++) {
 	    r = i;
 	    val = fabs(mat->data[i][i]);
-	    for(l = i+1; l < mat->c - 1; l++)
+	    for(l = i; l < mat->c; l++)
 	    {
 	    	if(fabs(mat->data[l][i]) > val)
 		{

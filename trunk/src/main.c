@@ -16,11 +16,16 @@ int main(int argc, char ** argv) {
 	printToScreen(A);
 	printToScreen(b);
 
-	res = eliminate(A,b);
+	if ((res = eliminate(A,b)) != 0){
+		printf("Blad.\n");
+		return 1;
+	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
-		res = backsubst(x,A,b);
-
+		if ((res = backsubst(x,A,b)) != 0){
+			printf("Blad.\n");
+			return 1;
+		}
 		printToScreen(x);
 	  freeMatrix(x);
 	} else {
