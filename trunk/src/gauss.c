@@ -1,13 +1,18 @@
 #include "gauss.h"
 #include <tgmath.h>
 #include <stdio.h>
-/*
- * Zwraca 0 - elimnacja zakonczona sukcesem
- * Zwraca 1 - macierz osobliwa - dzielenie przez 0
- */
+
 int eliminate(Matrix *mat, Matrix *b){
 	int i, j, k, r, l;
 	double  term, val, tmp;
+	if( mat->r != mat->c) { 
+		printf("Niepoprawne dane, %dx%d\n", mat->r, mat->c);
+		return 1;
+	}
+	if (mat->r != b->r) {
+		printf("Liczba wierszy macierzy A jest rozna od liczby wierszy macierzy B, %d =/= %d", mat->r, b->r); 
+		return 1;
+	}
     	for (i = 0; i < mat->r -1; i++) {
 	    r = i;
 	    val = fabs(mat->data[i][i]);
@@ -39,6 +44,6 @@ int eliminate(Matrix *mat, Matrix *b){
 	    }
 	}
 	
-
+	printf("Poprawne dane: %dx%d\n", mat->r, mat->c);
         return 0;
 }

@@ -13,7 +13,7 @@ Matrix * readFromFile(char * fname) {
 				Matrix * mat = NULL;
 
 				if (fin != NULL) {
-					fscanf(fin,"%d %d",&r,&c);
+					if (!(fscanf(fin,"%d %d",&r,&c))) return NULL;
 					mat = createMatrix(r,c);
 					if (mat != NULL) {
 						for (ir = 0; ir < r; ir++) 
@@ -25,7 +25,9 @@ Matrix * readFromFile(char * fname) {
 
 					fclose(fin);
 				} else {
-								fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
+						
+					fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
+					return NULL;
 				}
 
 				return mat;
@@ -54,7 +56,7 @@ Matrix * createMatrix(int r, int c) {
 			for (i=0; i < r; i++) {
 					mat->data[i] = (double*) malloc(sizeof(double) * c);
 			}
-		}
+		} 
 
 		return mat;
 }
