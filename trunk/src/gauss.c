@@ -1,17 +1,14 @@
 #include "gauss.h"
 #include <tgmath.h>
-#include <stdio.h>
 
 int eliminate(Matrix *mat, Matrix *b){
 	int i, j, k, r, l;
 	double  term, val, tmp;
 	if( mat->r != mat->c) { 
-		printf("Niepoprawne dane, %dx%d\n", mat->r, mat->c);
-		return 1;
+		return 2;
 	}
 	if (mat->r != b->r) {
-		printf("Liczba wierszy macierzy A jest rozna od liczby wierszy macierzy B, %d =/= %d", mat->r, b->r); 
-		return 1;
+		return 3;
 	}
     	for (i = 0; i < mat->r -1; i++) {
 	    r = i;

@@ -22,14 +22,27 @@ int main(int argc, char ** argv) {
 	printToScreen(A);
 	printToScreen(b);
 
-	if ((res = eliminate(A,b)) != 0){
-		printf("Blad.\n");
+	res = eliminate(A,b);
+	if (res == 1)
+	{
+		printf("Macierz osobliwa\n");
 		return 1;
+	}
+	else if(res == 2)
+	{
+		printf("Macierz niekwadratowa.\n");
+		return 1;
+	}
+	else if(res == 3)
+	{
+		printf("Liczba wierszy macierzy A jest rozna od liczby wierszy macierzy B\n");
+		return 1;
+	}
 	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
-		if ((res = backsubst(x,A,b)) != 0){
-			printf("Blad.\n");
+		if ((res = backsubst(x,A,b)) != 1){
+			printf("Blad dzielenia przez 0.\n");
 			return 1;
 		}
 		printToScreen(x);
