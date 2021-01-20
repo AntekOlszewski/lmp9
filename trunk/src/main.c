@@ -38,10 +38,9 @@ int main(int argc, char ** argv) {
 		printf("Liczba wierszy macierzy A jest rozna od liczby wierszy macierzy B\n");
 		return 1;
 	}
-	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
-		if ((res = backsubst(x,A,b)) != 1){
+		if ((res = backsubst(x,A,b)) == 1){
 			printf("Blad dzielenia przez 0.\n");
 			return 1;
 		}

@@ -41,6 +41,5 @@ int eliminate(Matrix *mat, Matrix *b){
 	    }
 	}
 	
-	printf("Poprawne dane: %dx%d\n", mat->r, mat->c);
         return 0;
 }

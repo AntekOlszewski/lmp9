@@ -23,6 +23,8 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 		{
 			wynik -= mat->data[i][j] * x->data[j][0];
 		}
+			if(mat->data[i][j] == 0)
+				return 1;
 			wynik /= mat->data[i][j];
 			x->data[i][0] = wynik;
 	}
